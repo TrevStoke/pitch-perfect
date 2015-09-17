@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -25,31 +26,48 @@
                                     <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qoB-uW-mZl"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64O-TR-r5K">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="64O-TR-r5K" firstAttribute="top" secondItem="nhc-TN-Gng" secondAttribute="bottom" constant="8" id="EpB-Go-AtL"/>
+                            <constraint firstItem="64O-TR-r5K" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="TA0-GC-jJl"/>
                             <constraint firstAttribute="centerX" secondItem="nhc-TN-Gng" secondAttribute="centerX" constant="-2" id="YQo-0U-sWw"/>
                             <constraint firstAttribute="centerY" secondItem="nhc-TN-Gng" secondAttribute="centerY" id="pWD-QD-M8q"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="nhc-TN-Gng"/>
+                                <exclude reference="64O-TR-r5K"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="YQo-0U-sWw"/>
                                 <exclude reference="pWD-QD-M8q"/>
+                                <exclude reference="EpB-Go-AtL"/>
+                                <exclude reference="TA0-GC-jJl"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="nhc-TN-Gng"/>
+                                <include reference="64O-TR-r5K"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="YQo-0U-sWw"/>
                                 <include reference="pWD-QD-M8q"/>
+                                <include reference="EpB-Go-AtL"/>
+                                <include reference="TA0-GC-jJl"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="recordingLabel" destination="64O-TR-r5K" id="v4P-bM-tfA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
