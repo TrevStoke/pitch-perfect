@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="1278" y="525"/>
         </scene>
-        <!--Play Sounds View Controller-->
+        <!--Play-->
         <scene sceneID="1Kl-XK-V19">
             <objects>
                 <viewController id="7uv-Ah-MyU" customClass="PlaySoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,13 +134,22 @@
                                     <action selector="playChipmunk:" destination="7uv-Ah-MyU" eventType="touchUpInside" id="QeD-Ae-wLk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIn-78-EVI">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="vader"/>
+                                <connections>
+                                    <action selector="playVader:" destination="7uv-Ah-MyU" eventType="touchUpInside" id="iRB-ix-mUx"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.4504124947" green="0.66617455910000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="UIn-78-EVI" firstAttribute="top" secondItem="yjK-uk-yJZ" secondAttribute="bottom" constant="136" id="1la-FJ-OKj"/>
                             <constraint firstItem="HLY-sM-JO5" firstAttribute="top" secondItem="jyh-o9-Zam" secondAttribute="bottom" constant="20" id="28W-Ue-5MH"/>
                             <constraint firstItem="8lN-zZ-D8L" firstAttribute="top" secondItem="OcL-Ao-ToY" secondAttribute="bottom" constant="136" id="3Bw-we-6Au"/>
                             <constraint firstItem="OcL-Ao-ToY" firstAttribute="top" secondItem="m6G-p8-WwC" secondAttribute="bottom" constant="50" id="9Dl-2A-3wk"/>
                             <constraint firstItem="8lN-zZ-D8L" firstAttribute="leading" secondItem="9IE-Vw-Zbb" secondAttribute="leadingMargin" constant="30" id="TYY-lB-nwk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UIn-78-EVI" secondAttribute="trailing" constant="30" id="VT1-PT-rU8"/>
                             <constraint firstItem="jyh-o9-Zam" firstAttribute="centerX" secondItem="9IE-Vw-Zbb" secondAttribute="centerX" id="gq7-al-Rgc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yjK-uk-yJZ" secondAttribute="trailing" constant="30" id="m7T-ev-Bwh"/>
                             <constraint firstItem="yjK-uk-yJZ" firstAttribute="top" secondItem="m6G-p8-WwC" secondAttribute="bottom" constant="50" id="moF-3o-M8i"/>
@@ -152,6 +161,7 @@
                                 <exclude reference="yjK-uk-yJZ"/>
                                 <exclude reference="jyh-o9-Zam"/>
                                 <exclude reference="8lN-zZ-D8L"/>
+                                <exclude reference="UIn-78-EVI"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="9Dl-2A-3wk"/>
@@ -160,6 +170,8 @@
                                 <exclude reference="moF-3o-M8i"/>
                                 <exclude reference="3Bw-we-6Au"/>
                                 <exclude reference="TYY-lB-nwk"/>
+                                <exclude reference="1la-FJ-OKj"/>
+                                <exclude reference="VT1-PT-rU8"/>
                                 <exclude reference="gq7-al-Rgc"/>
                                 <exclude reference="28W-Ue-5MH"/>
                             </mask>
@@ -170,6 +182,7 @@
                                 <include reference="yjK-uk-yJZ"/>
                                 <include reference="jyh-o9-Zam"/>
                                 <include reference="8lN-zZ-D8L"/>
+                                <include reference="UIn-78-EVI"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="9Dl-2A-3wk"/>
@@ -178,11 +191,14 @@
                                 <include reference="moF-3o-M8i"/>
                                 <include reference="3Bw-we-6Au"/>
                                 <include reference="TYY-lB-nwk"/>
+                                <include reference="1la-FJ-OKj"/>
+                                <include reference="VT1-PT-rU8"/>
                                 <include reference="gq7-al-Rgc"/>
                                 <include reference="28W-Ue-5MH"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Play" id="EIo-7L-VyE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8m-9S-scw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,5 +229,6 @@
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>
         <image name="stop" width="100" height="100"/>
+        <image name="vader" width="100" height="100"/>
     </resources>
 </document>
