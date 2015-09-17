@@ -12,6 +12,7 @@ import AVFoundation
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     var audioRecorder:AVAudioRecorder!
+    var recorded:RecordedAudio!
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
@@ -66,8 +67,19 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        //TODO: Step 1 - save the recorded Audio
-        //TODO: Step 2 - move to the next scene.
+        
+        if(flag){
+            recorded = RecordedAudio()
+            recorded.filePathUrl = recorder.url
+            recorded.title = recorder.url.lastPathComponent
+            
+            self.performSegueWithIdentifier("stopRecording", sender: recorded)
+        } else {
+            print("Error occurred while saving audio")
+            recordButton.enabled = true
+            stopButton.hidden = true
+        }
+        
     }
 }
 
