@@ -3,13 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Record-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Record" id="vXZ-lx-hvc" customClass="ViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Record" id="vXZ-lx-hvc" customClass="RecordSoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -30,7 +31,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64O-TR-r5K">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6b-cf-yAd">
@@ -58,12 +59,12 @@
                                 <exclude reference="T6b-cf-yAd"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="uPZ-Nu-If8"/>
+                                <exclude reference="D3C-ZO-qfY"/>
                                 <exclude reference="YQo-0U-sWw"/>
                                 <exclude reference="pWD-QD-M8q"/>
                                 <exclude reference="EpB-Go-AtL"/>
                                 <exclude reference="TA0-GC-jJl"/>
-                                <exclude reference="D3C-ZO-qfY"/>
-                                <exclude reference="uPZ-Nu-If8"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -73,12 +74,12 @@
                                 <include reference="T6b-cf-yAd"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="uPZ-Nu-If8"/>
+                                <include reference="D3C-ZO-qfY"/>
                                 <include reference="YQo-0U-sWw"/>
                                 <include reference="pWD-QD-M8q"/>
                                 <include reference="EpB-Go-AtL"/>
                                 <include reference="TA0-GC-jJl"/>
-                                <include reference="D3C-ZO-qfY"/>
-                                <include reference="uPZ-Nu-If8"/>
                             </mask>
                         </variation>
                     </view>
@@ -102,6 +103,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HLY-sM-JO5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9IE-Vw-Zbb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcL-Ao-ToY">
@@ -142,12 +144,12 @@
                                 <exclude reference="jyh-o9-Zam"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="28W-Ue-5MH"/>
                                 <exclude reference="9Dl-2A-3wk"/>
                                 <exclude reference="nBy-Sk-Dud"/>
+                                <exclude reference="gq7-al-Rgc"/>
                                 <exclude reference="m7T-ev-Bwh"/>
                                 <exclude reference="moF-3o-M8i"/>
-                                <exclude reference="gq7-al-Rgc"/>
-                                <exclude reference="28W-Ue-5MH"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -157,12 +159,12 @@
                                 <include reference="jyh-o9-Zam"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="28W-Ue-5MH"/>
                                 <include reference="9Dl-2A-3wk"/>
                                 <include reference="nBy-Sk-Dud"/>
+                                <include reference="gq7-al-Rgc"/>
                                 <include reference="m7T-ev-Bwh"/>
                                 <include reference="moF-3o-M8i"/>
-                                <include reference="gq7-al-Rgc"/>
-                                <include reference="28W-Ue-5MH"/>
                             </mask>
                         </variation>
                     </view>
