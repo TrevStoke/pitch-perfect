@@ -27,7 +27,7 @@ class PlaySoundsViewController: UIViewController {
             try audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, fileTypeHint:"wav")
             audioPlayer.enableRate = true
         } catch {
-            print("Error occurred playing sound")
+            print("Error occurred loading sound")
         }
     }
 
@@ -37,6 +37,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlow(sender: UIButton) {
+        stopAndResetAudioEngine()
         audioPlayer.stop()
         audioPlayer.rate = 0.5
         audioPlayer.currentTime = 0.0
@@ -45,6 +46,7 @@ class PlaySoundsViewController: UIViewController {
     }
 
     @IBAction func playFast(sender: UIButton) {
+        stopAndResetAudioEngine()
         audioPlayer.stop()
         audioPlayer.rate = 2.0
         audioPlayer.currentTime = 0.0
@@ -60,10 +62,14 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariablePitch(-1000)
     }
     
-    func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
+    func stopAndResetAudioEngine() {
         audioEngine.stop()
         audioEngine.reset()
+    }
+    
+    func playAudioWithVariablePitch(pitch: Float){
+        audioPlayer.stop()
+        stopAndResetAudioEngine()
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
