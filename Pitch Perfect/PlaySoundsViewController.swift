@@ -109,6 +109,58 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioPlayerNode.play()
     }
     
+    func playAudioWithReverb(extent: Float) {
+        audioPlayer.stop()
+        stopAndResetAudioEngine()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        let changeReverbEffect = AVAudioUnitReverb()
+        changeReverbEffect.wetDryMix = extent
+        
+        audioEngine.attachNode(changeReverbEffect)
+        audioEngine.connect(audioPlayerNode, to: changeReverbEffect, format: nil)
+        audioEngine.connect(changeReverbEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: configureViewToStart)
+        
+        try! audioEngine.start()
+        audioPlayerNode.play()
+    }
+    
+    func playAudioWithEcho(delay: Float) {
+        
+    }
+    
+    func playAudioWithUnitEffect(effect: AVAudioUnitEffect) {
+        audioPlayer.stop()
+        stopAndResetAudioEngine()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        audioEngine.attachNode(effect)
+        audioEngine.connect(audioPlayerNode, to: effect, format: nil)
+        audioEngine.connect(effect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: configureViewToPlay)
+        
+        try! audioEngine.start()
+        audioPlayerNode.play()
+    }
+    
+    @IBAction func playReverb(sender: UIButton) {
+        configureViewToPlay()
+        playAudioWithReverb(75.0)
+    }
+    
+    @IBAction func playEcho(sender: UIButton) {
+        configureViewToPlay()
+        playAudioWithReverb(100)
+    }
+    
+    
     @IBAction func stopAudio(sender: UIButton) {
         audioPlayer.stop()
         stopAndResetAudioEngine()

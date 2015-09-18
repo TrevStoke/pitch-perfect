@@ -144,24 +144,30 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBI-97-UPO">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="echo"/>
+                                <connections>
+                                    <action selector="playEcho:" destination="7uv-Ah-MyU" eventType="touchUpInside" id="y5x-Vw-8mX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7r-ZS-fbh">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="reverb"/>
+                                <connections>
+                                    <action selector="playReverb:" destination="7uv-Ah-MyU" eventType="touchUpInside" id="li4-Ug-RXd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.4504124947" green="0.66617455910000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="UIn-78-EVI" firstAttribute="top" secondItem="yjK-uk-yJZ" secondAttribute="bottom" constant="80" id="1la-FJ-OKj"/>
+                            <constraint firstItem="UIn-78-EVI" firstAttribute="top" secondItem="yjK-uk-yJZ" secondAttribute="bottom" constant="50" id="1la-FJ-OKj"/>
                             <constraint firstItem="HLY-sM-JO5" firstAttribute="top" secondItem="jyh-o9-Zam" secondAttribute="bottom" constant="20" id="28W-Ue-5MH"/>
-                            <constraint firstItem="8lN-zZ-D8L" firstAttribute="top" secondItem="OcL-Ao-ToY" secondAttribute="bottom" constant="80" id="3Bw-we-6Au"/>
+                            <constraint firstItem="8lN-zZ-D8L" firstAttribute="top" secondItem="OcL-Ao-ToY" secondAttribute="bottom" constant="50" id="3Bw-we-6Au"/>
                             <constraint firstItem="x7r-ZS-fbh" firstAttribute="leading" secondItem="9IE-Vw-Zbb" secondAttribute="leadingMargin" constant="40" id="8xU-ne-oun"/>
                             <constraint firstItem="OcL-Ao-ToY" firstAttribute="top" secondItem="m6G-p8-WwC" secondAttribute="bottom" constant="50" id="9Dl-2A-3wk"/>
-                            <constraint firstItem="x7r-ZS-fbh" firstAttribute="top" secondItem="8lN-zZ-D8L" secondAttribute="bottom" constant="80" id="Cjg-ij-aeQ"/>
+                            <constraint firstItem="x7r-ZS-fbh" firstAttribute="top" secondItem="8lN-zZ-D8L" secondAttribute="bottom" constant="50" id="Cjg-ij-aeQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dBI-97-UPO" secondAttribute="trailing" constant="40" id="Gs8-qx-L33"/>
                             <constraint firstItem="8lN-zZ-D8L" firstAttribute="leading" secondItem="9IE-Vw-Zbb" secondAttribute="leadingMargin" constant="30" id="TYY-lB-nwk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UIn-78-EVI" secondAttribute="trailing" constant="30" id="VT1-PT-rU8"/>
-                            <constraint firstItem="dBI-97-UPO" firstAttribute="top" secondItem="UIn-78-EVI" secondAttribute="bottom" constant="80" id="d92-4c-7yw"/>
+                            <constraint firstItem="dBI-97-UPO" firstAttribute="top" secondItem="UIn-78-EVI" secondAttribute="bottom" constant="50" id="d92-4c-7yw"/>
                             <constraint firstItem="jyh-o9-Zam" firstAttribute="centerX" secondItem="9IE-Vw-Zbb" secondAttribute="centerX" id="gq7-al-Rgc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yjK-uk-yJZ" secondAttribute="trailing" constant="30" id="m7T-ev-Bwh"/>
                             <constraint firstItem="yjK-uk-yJZ" firstAttribute="top" secondItem="m6G-p8-WwC" secondAttribute="bottom" constant="50" id="moF-3o-M8i"/>
