@@ -27,7 +27,7 @@ class PlaySoundsViewController: UIViewController {
             try audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, fileTypeHint:"wav")
             audioPlayer.enableRate = true
         } catch {
-            print("Error occurred loading sound")
+            print("Error occurred loading sound into AudioPlayer")
         }
     }
 
