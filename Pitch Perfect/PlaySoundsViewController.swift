@@ -9,12 +9,21 @@
 import UIKit
 import AVFoundation
 
-class PlaySoundsViewController: UIViewController {
+class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     
     var audioPlayer:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
     var audioEngine:AVAudioEngine!
     var audioFile:AVAudioFile!
+    @IBOutlet weak var stopButton: UIButton!
+    
+    func configureViewToStart() {
+        stopButton.hidden = true
+    }
+    
+    func configureViewToPlay() {
+        stopButton.hidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +35,18 @@ class PlaySoundsViewController: UIViewController {
         do {
             try audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, fileTypeHint:"wav")
             audioPlayer.enableRate = true
+            audioPlayer.delegate = self
         } catch {
             print("Error occurred loading sound into AudioPlayer")
         }
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        configureViewToStart()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        configureViewToStart()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +55,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlow(sender: UIButton) {
+        configureViewToPlay()
         stopAndResetAudioEngine()
         audioPlayer.stop()
         audioPlayer.rate = 0.5
@@ -46,6 +65,7 @@ class PlaySoundsViewController: UIViewController {
     }
 
     @IBAction func playFast(sender: UIButton) {
+        configureViewToPlay()
         stopAndResetAudioEngine()
         audioPlayer.stop()
         audioPlayer.rate = 2.0
@@ -55,10 +75,12 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playChipmunk(sender: UIButton) {
+        configureViewToPlay()
         playAudioWithVariablePitch(1000)
     }
     
     @IBAction func playVader(sender: UIButton) {
+        configureViewToPlay()
         playAudioWithVariablePitch(-1000)
     }
     
@@ -81,7 +103,7 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: configureViewToStart)
         try! audioEngine.start()
         
         audioPlayerNode.play()
@@ -89,6 +111,7 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func stopAudio(sender: UIButton) {
         audioPlayer.stop()
+        configureViewToStart()
     }
     
     /*

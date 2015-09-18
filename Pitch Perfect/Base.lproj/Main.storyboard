@@ -199,6 +199,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Play" id="EIo-7L-VyE"/>
+                    <connections>
+                        <outlet property="stopButton" destination="jyh-o9-Zam" id="dNf-dM-5hF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8m-9S-scw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

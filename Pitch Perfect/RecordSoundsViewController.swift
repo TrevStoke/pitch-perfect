@@ -24,10 +24,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        recordingLabel.hidden = true
-        stopButton.hidden = true
-        recordButton.hidden = false
-        recordButton.enabled = true
+        configureViewToStart()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,9 +33,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func recordAudio(sender: UIButton) {
-        recordingLabel.hidden = false
-        stopButton.hidden = false
-        recordButton.enabled = false
+        configureViewToRecording()
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         let recordingName = "recording.wav"
@@ -81,10 +76,22 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             self.performSegueWithIdentifier("stopRecording", sender: recorded)
         } else {
             print("Error occurred while saving audio")
-            recordButton.enabled = true
-            stopButton.hidden = true
+            configureViewToStart()
         }
-        
+    }
+    
+    func configureViewToStart() {
+        recordingLabel.hidden = false
+        recordingLabel.text = "Tap to Record"
+        stopButton.hidden = true
+    }
+    
+    func configureViewToRecording() {
+        recordButton.enabled = false
+        recordingLabel.hidden = false
+        recordingLabel.text = "Recording in Progress"
+        stopButton.hidden = false
+        stopButton.enabled = true
     }
 }
 
