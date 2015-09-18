@@ -111,6 +111,7 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBAction func stopAudio(sender: UIButton) {
         audioPlayer.stop()
+        stopAndResetAudioEngine()
         configureViewToStart()
     }
     
