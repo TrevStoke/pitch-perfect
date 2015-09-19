@@ -31,7 +31,6 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
         
-        // Do any additional setup after loading the view.
         do {
             try audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, fileTypeHint:"wav")
             audioPlayer.enableRate = true
@@ -51,7 +50,6 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func playWithSpeed(speed: Float) {
@@ -141,15 +139,4 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioPlayer.stop()
         stopAndResetAudioEngine()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
