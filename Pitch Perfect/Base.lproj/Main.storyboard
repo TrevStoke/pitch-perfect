@@ -41,13 +41,25 @@
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JSu-S0-MXj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1S9-i2-uxP">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="pause"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="150" y="486" width="100" height="100"/>
+                                </variation>
+                                <connections>
+                                    <action selector="pauseRecord:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Q9I-yO-3gq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.45041249473486067" green="0.66617455913542956" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="T6b-cf-yAd" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="D3C-ZO-qfY"/>
                             <constraint firstItem="64O-TR-r5K" firstAttribute="top" secondItem="nhc-TN-Gng" secondAttribute="bottom" constant="8" id="EpB-Go-AtL"/>
+                            <constraint firstItem="1S9-i2-uxP" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="O0q-Jt-pP7"/>
                             <constraint firstItem="64O-TR-r5K" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="TA0-GC-jJl"/>
                             <constraint firstAttribute="centerX" secondItem="nhc-TN-Gng" secondAttribute="centerX" constant="-2" id="YQo-0U-sWw"/>
+                            <constraint firstItem="1S9-i2-uxP" firstAttribute="top" secondItem="64O-TR-r5K" secondAttribute="bottom" constant="7.5" id="l1L-rF-ZHK"/>
                             <constraint firstAttribute="centerY" secondItem="nhc-TN-Gng" secondAttribute="centerY" id="pWD-QD-M8q"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="T6b-cf-yAd" secondAttribute="bottom" constant="20" id="uPZ-Nu-If8"/>
                         </constraints>
@@ -56,14 +68,17 @@
                                 <exclude reference="nhc-TN-Gng"/>
                                 <exclude reference="64O-TR-r5K"/>
                                 <exclude reference="T6b-cf-yAd"/>
+                                <exclude reference="1S9-i2-uxP"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="uPZ-Nu-If8"/>
-                                <exclude reference="D3C-ZO-qfY"/>
                                 <exclude reference="YQo-0U-sWw"/>
                                 <exclude reference="pWD-QD-M8q"/>
                                 <exclude reference="EpB-Go-AtL"/>
                                 <exclude reference="TA0-GC-jJl"/>
+                                <exclude reference="O0q-Jt-pP7"/>
+                                <exclude reference="l1L-rF-ZHK"/>
+                                <exclude reference="D3C-ZO-qfY"/>
+                                <exclude reference="uPZ-Nu-If8"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -71,19 +86,23 @@
                                 <include reference="nhc-TN-Gng"/>
                                 <include reference="64O-TR-r5K"/>
                                 <include reference="T6b-cf-yAd"/>
+                                <include reference="1S9-i2-uxP"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="uPZ-Nu-If8"/>
-                                <include reference="D3C-ZO-qfY"/>
                                 <include reference="YQo-0U-sWw"/>
                                 <include reference="pWD-QD-M8q"/>
                                 <include reference="EpB-Go-AtL"/>
                                 <include reference="TA0-GC-jJl"/>
+                                <include reference="O0q-Jt-pP7"/>
+                                <include reference="l1L-rF-ZHK"/>
+                                <include reference="D3C-ZO-qfY"/>
+                                <include reference="uPZ-Nu-If8"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="RCs-Nx-gRU"/>
                     <connections>
+                        <outlet property="pauseButton" destination="1S9-i2-uxP" id="Csl-ha-34s"/>
                         <outlet property="recordButton" destination="nhc-TN-Gng" id="ksK-yf-7A7"/>
                         <outlet property="recordingLabel" destination="64O-TR-r5K" id="v4P-bM-tfA"/>
                         <outlet property="stopButton" destination="T6b-cf-yAd" id="3ba-Fx-b2b"/>
@@ -261,6 +280,7 @@
         <image name="echo" width="80" height="80"/>
         <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="pause" width="80" height="80"/>
         <image name="reverb" width="80" height="80"/>
         <image name="slow" width="100" height="100"/>
         <image name="stop" width="100" height="100"/>
