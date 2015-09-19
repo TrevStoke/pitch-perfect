@@ -54,24 +54,24 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func playSlow(sender: UIButton) {
-        configureViewToPlay()
+    func playWithSpeed(speed: Float) {
         stopAndResetAudioEngine()
         audioPlayer.stop()
-        audioPlayer.rate = 0.5
+        audioPlayer.rate = speed
         audioPlayer.currentTime = 0.0
         audioPlayer.prepareToPlay()
         audioPlayer.play()
+
+    }
+    
+    @IBAction func playSlow(sender: UIButton) {
+        configureViewToPlay()
+        playWithSpeed(0.5)
     }
 
     @IBAction func playFast(sender: UIButton) {
         configureViewToPlay()
-        stopAndResetAudioEngine()
-        audioPlayer.stop()
-        audioPlayer.rate = 2.0
-        audioPlayer.currentTime = 0.0
-        audioPlayer.prepareToPlay()
-        audioPlayer.play()
+        playWithSpeed(2.0)
     }
     
     @IBAction func playChipmunk(sender: UIButton) {
@@ -90,50 +90,25 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
-        stopAndResetAudioEngine()
-        
-        let audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
-        
         let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
+        playAudioWithUnit(changePitchEffect)
         
-        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
-        
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: configureViewToStart)
-        try! audioEngine.start()
-        
-        audioPlayerNode.play()
-    }
-    
-    func playAudioWithReverb(extent: Float) {
-        audioPlayer.stop()
-        stopAndResetAudioEngine()
-        
-        let audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
-        
-        let changeReverbEffect = AVAudioUnitReverb()
-        changeReverbEffect.wetDryMix = extent
-        
-        audioEngine.attachNode(changeReverbEffect)
-        audioEngine.connect(audioPlayerNode, to: changeReverbEffect, format: nil)
-        audioEngine.connect(changeReverbEffect, to: audioEngine.outputNode, format: nil)
-        
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: configureViewToStart)
-        
-        try! audioEngine.start()
-        audioPlayerNode.play()
     }
     
     func playAudioWithEcho(delay: Float) {
-        
+        let echoNode = AVAudioUnitDelay()
+        echoNode.delayTime = NSTimeInterval(delay)
+        playAudioWithUnit(echoNode)
     }
     
-    func playAudioWithUnitEffect(effect: AVAudioUnitEffect) {
+    func playAudioWithReverb(extent: Float) {
+        let changeReverbEffect = AVAudioUnitReverb()
+        changeReverbEffect.wetDryMix = extent
+        playAudioWithUnit(changeReverbEffect)
+    }
+    
+    func playAudioWithUnit(effect: AVAudioUnit) {
         audioPlayer.stop()
         stopAndResetAudioEngine()
         
@@ -157,14 +132,14 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBAction func playEcho(sender: UIButton) {
         configureViewToPlay()
-        playAudioWithReverb(100)
+        playAudioWithEcho(0.3)
     }
     
     
     @IBAction func stopAudio(sender: UIButton) {
+        configureViewToStart()
         audioPlayer.stop()
         stopAndResetAudioEngine()
-        configureViewToStart()
     }
     
     /*
